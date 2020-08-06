@@ -46,6 +46,10 @@ export class HTMLTagSpecification {
   constructor(public label: string | MarkupContent, public attributes: Attribute[] = []) {}
 }
 
+export class WXMLTagSpecification {
+  constructor(public label: string | MarkupContent, public attributes: Attribute[] = []) {}
+}
+
 export interface IValueSets {
   [tag: string]: string[];
 }
@@ -122,5 +126,8 @@ export function collectValuesDefault(
 }
 
 export function genAttribute(label: string, type?: string, documentation?: string | MarkupContent): Attribute {
-  return { label, type, documentation };
+  return { label, type, documentation: {
+    kind: 'markdown',
+    value: documentation as string
+  } };
 }
