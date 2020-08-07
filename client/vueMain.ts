@@ -72,6 +72,10 @@ export async function activate(context: vscode.ExtensionContext) {
     .catch(e => {
       console.log('Client initialization failed');
     });
+  context.subscriptions.push(vscode.languages.registerCompletionItemProvider(['wxml'], {
+    provideCompletionItems,
+    resolveCompletionItem
+  }, '1'));
 }
 
 function registerCustomClientNotificationHandlers(client: LanguageClient) {
@@ -93,4 +97,86 @@ function registerCustomLSPCommands(context: vscode.ExtensionContext, client: Lan
   context.subscriptions.push(
     vscode.commands.registerCommand('vetur.showCorrespondingVirtualFile', generateShowVirtualFileCommand(client))
   );
+}
+
+// 微信的原始组件
+const keys: string[] = [
+  'cover-image',
+  'cover-view',
+  'match-media',
+  'movable-area',
+  'movable-view',
+  'scroll-view',
+  'swiper',
+  'swiper-item',
+  'view',
+  'icon',
+  'progress',
+  'rich-text',
+  'text',
+  // 'button',
+  'checkbox',
+  'checkbox-group',
+  'editor',
+  // 'form',
+  // 'input',
+  // 'label',
+  'picker',
+  'picker-view',
+  'picker-view-column',
+  'radio',
+  'radio-group',
+  'slider',
+  'switch',
+  'textarea',
+  'functional-page-navigator',
+  'navigator',
+  // 'audio',
+  'camera',
+  // 'image',
+  'live-player',
+  'live-pusher',
+  // 'video',
+  'voip-room',
+  // 'map',
+  // 'canvas',
+  'ad',
+  'ad-custom',
+  'official-account',
+  'open-data',
+  'web-view'
+]
+
+function craeteCompletion (key: string) {
+  let item = new vscode.CompletionItem(key, vscode.CompletionItemKind.Property)
+  item.detail = '小程序组件'
+  item.documentation = `<${key}>|</${key}>`
+  item.insertText = new vscode.SnippetString(`<${key}>$1</${key}>`)
+  return item
+}
+
+// 确定提示的位置
+function provideCompletionItems(document: any, position: any) {
+  const text = document.getText()
+  const tempEnd = text.lastIndexOf('</view>')
+  const temp = text.slice(0, tempEnd + 11)
+  const pos = document.offsetAt(position)
+  if (tempEnd < 0 || pos > tempEnd) {
+    return [craeteCompletion('view')]
+  }
+  const posLeft = temp.slice(0, pos).lastIndexOf('>')
+  const posRight = temp.slice(pos, tempEnd + 11).indexOf('<')
+  if (posLeft < 0 || posRight < 0) {
+    return null
+  }
+  const rangeLeft = text.slice(posLeft + 1, pos)
+  const rangeRight = text.slice(pos, pos + posRight)
+  if (rangeLeft.includes('<') || rangeRight.includes('>')) {
+    return null
+  }
+  return keys.map((key) => craeteCompletion(key))
+}
+
+function resolveCompletionItem() {
+  return null;
 }
