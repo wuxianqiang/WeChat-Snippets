@@ -72,7 +72,7 @@ export async function activate(context: vscode.ExtensionContext) {
     .catch(e => {
       console.log('Client initialization failed');
     });
-  context.subscriptions.push(vscode.languages.registerCompletionItemProvider(['wxml'], {
+  context.subscriptions.push(vscode.languages.registerCompletionItemProvider(['wxml', 'axml', 'qml', 'ttml', 'jxml', 'swan'], {
     provideCompletionItems,
     resolveCompletionItem
   }, '1'));
@@ -114,13 +114,13 @@ const keys: string[] = [
   'progress',
   'rich-text',
   'text',
-  // 'button',
+  'button',
   'checkbox',
   'checkbox-group',
   'editor',
-  // 'form',
-  // 'input',
-  // 'label',
+  'form',
+  'input',
+  'label',
   'picker',
   'picker-view',
   'picker-view-column',
@@ -131,15 +131,15 @@ const keys: string[] = [
   'textarea',
   'functional-page-navigator',
   'navigator',
-  // 'audio',
+  'audio',
   'camera',
-  // 'image',
+  'image',
   'live-player',
   'live-pusher',
-  // 'video',
+  'video',
   'voip-room',
-  // 'map',
-  // 'canvas',
+  'map',
+  'canvas',
   'ad',
   'ad-custom',
   'official-account',

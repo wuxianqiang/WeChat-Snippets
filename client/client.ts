@@ -12,7 +12,7 @@ import { existsSync } from 'fs';
 export function initializeLanguageClient(vlsModulePath: string, globalSnippetDir: string): LanguageClient {
   const debugOptions = { execArgv: ['--nolazy', '--inspect=6005'] };
 
-  const documentSelector = ['wxml'];
+  const documentSelector = ['wxml', 'axml', 'qml', 'ttml', 'jxml', 'swan'];
   const config = vscode.workspace.getConfiguration();
 
   let serverPath;
