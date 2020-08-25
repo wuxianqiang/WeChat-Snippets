@@ -73,6 +73,7 @@ export class VueHTMLMode implements LanguageMode {
     return this.htmlMode.findDocumentSymbols(document);
   }
   format(document: TextDocument, range: Range, formattingOptions: FormattingOptions) {
+    // 每次格式化都会调用这个函数
     return this.htmlMode.format(document, range, formattingOptions);
   }
   findReferences(document: TextDocument, position: Position): Location[] {

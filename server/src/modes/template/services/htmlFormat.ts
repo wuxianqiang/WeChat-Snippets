@@ -10,10 +10,11 @@ import { prettierify } from '../../../utils/prettier';
 
 type PrettyHtmlConfig = IPrettyHtml extends (input: string, options: infer R) => any ? NonNullable<R> : never;
 
-const TEMPLATE_HEAD = '<template>';
-const TEMPLATE_TAIL = '</template>';
+const TEMPLATE_HEAD = '<view>';
+const TEMPLATE_TAIL = '</view>';
 
 export function htmlFormat(document: TextDocument, currRange: Range, vlsFormatConfig: VLSFormatConfig): TextEdit[] {
+  // 这是格式化文档真正调用的地方
   if (vlsFormatConfig.defaultFormatter.html === 'none') {
     return [];
   }

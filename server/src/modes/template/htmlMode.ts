@@ -82,6 +82,7 @@ export class HTMLMode implements LanguageMode {
     return findDocumentSymbols(document, this.vueDocuments.refreshAndGet(document));
   }
   format(document: TextDocument, range: Range, formattingOptions: FormattingOptions) {
+    // 每次格式化都会调用这个函数
     return htmlFormat(document, range, this.config.vetur.format as VLSFormatConfig);
   }
   findDefinition(document: TextDocument, position: Position) {

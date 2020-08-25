@@ -1,19 +1,28 @@
 # WeChat Snippets for Visual Studio Code
 
-> ⚠️ 注意：请按照如下步骤操作
+> ⚠️ 注意：请先安装Vetur插件再安装此插件
 
-1. 请确保已经安装了 Vetur 插件
-2. 安装微信 API 类型声明文件：`npm install miniprogram-api-typings -D` 提供对微信 JS 支持
-3. 目前支持 `.wxml` `.axml` `.qml` `.ttml` `.jxml` `.swan` 结尾的文件代码高亮，并且拥有标签提示以及标签的属性提示
-4. 格式化和代码校验功能还未完成，敬请期待
-5. 使用上存在的问题可以在 GitHub 中留言给我，我会尽快处理
+
+## Features
+
+- Syntax-highlighting
+- 代码高亮
+- Snippet
+- 代码片断
+- Emmet
+- 代码提示
+- Linting / Error Checking
+- Formatting
+- 代码格式化
+- Auto Completion
+- 自动补全
 
 This extension adds WeChat Snippets into Visual Studio Code.
 
 这个插件基于最新的微信小程序 API 添加了Code Snippets。
 
 ### It looks like:
-![](/asset/demo.png)
+![logo](/asset/demo.png)
 
 
 
@@ -99,6 +108,8 @@ Including most of the API of WeChat. You can type `w`, choose `wx:if`, and press
 * ttml(.ttml)头条小程序
 * jxml(.jxml)京东小程序
 * swan(.swan)百度小程序
+
+> 微信小程序的JS由 `@types/wechat-miniprogram` 提供支持
 
 
 ### Issues

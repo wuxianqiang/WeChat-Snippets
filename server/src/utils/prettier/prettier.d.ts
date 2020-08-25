@@ -14,6 +14,7 @@ export type ParserOption =
   | 'graphql'
   | 'markdown'
   | 'vue'
+  | 'wxml'
   | 'html'
   | 'angular'
   | 'mdx'

@@ -171,10 +171,11 @@ export class VLS {
   }
 
   private async setupDynamicFormatters(settings: any) {
+    // 开始为指定的扩展名注册格式化
     if (settings.vetur.format.enable === true) {
       if (!this.documentFormatterRegistration) {
         this.documentFormatterRegistration = await this.lspConnection.client.register(DocumentFormattingRequest.type, {
-          documentSelector: ['vue']
+          documentSelector: ['wxml']
         });
       }
     } else {
@@ -272,7 +273,7 @@ export class VLS {
       this.displayErrorMessage('Formatting failed: "' + errMessages.join('\n') + '"');
       return [];
     }
-
+    console.log('格式化完成！')
     return allEdits;
   }
 
