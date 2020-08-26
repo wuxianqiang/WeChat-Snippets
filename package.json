@@ -4,7 +4,7 @@
   "description": "WeChat tooling for VS Code",
   "author": "Xianqiang Wu <2631640352@qq.com>",
   "icon": "asset/logo.png",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "publisher": "wuxianqiang",
   "scripts": {
     "build:grammar": "tsc -p . && node dist/scripts/build_grammar",
@@ -43,10 +43,10 @@
     "url": "https://github.com/vuejs/vetur.git"
   },
   "keywords": [
-    "vetur",
-    "Vue",
-    "vue",
-    "vuejs"
+    "小程序",
+    "微信小程序",
+    "wxml/axml/qml/ttml/jxml/swan",
+    "WeChat Snippets"
   ],
   "categories": [
     "Programming Languages"

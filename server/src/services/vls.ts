@@ -472,8 +472,9 @@ export class VLS {
   }
 
   doValidate(doc: TextDocument): Diagnostic[] {
+    // 这是代码校验的入口文件了languageId=wxml
     const diagnostics: Diagnostic[] = [];
-    if (doc.languageId === 'vue') {
+    if (doc.languageId === 'wxml') {
       this.languageModes.getAllLanguageModeRangesInDocument(doc).forEach(lmr => {
         if (lmr.mode.doValidation && this.validation[lmr.mode.getId()]) {
           pushAll(diagnostics, lmr.mode.doValidation(doc));

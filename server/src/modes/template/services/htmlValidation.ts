@@ -17,12 +17,13 @@ function toDiagnostic(error: Linter.LintMessage): Diagnostic {
 }
 
 export function doESLintValidation(document: TextDocument, engine: CLIEngine): Diagnostic[] {
+  // 这是真正代码校验的地方
   const rawText = document.getText();
   // skip checking on empty template
   if (rawText.replace(/\s/g, '') === '') {
     return [];
   }
-  const text = rawText.replace(/ {10}/, '<template>') + '</template>';
+  const text = rawText.replace(/ {6}/, '<template><div>') + '</div></template>';
   const report = engine.executeOnText(text, document.uri);
 
   return report.results[0] ? report.results[0].messages.map(toDiagnostic) : [];

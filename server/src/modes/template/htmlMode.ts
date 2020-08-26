@@ -52,6 +52,7 @@ export class HTMLMode implements LanguageMode {
   }
 
   doValidation(document: TextDocument) {
+    // 根据有语言类型进入到文件开始校验
     const embedded = this.embeddedDocuments.refreshAndGet(document);
     return doESLintValidation(embedded, this.lintEngine);
   }
