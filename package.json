@@ -4,7 +4,7 @@
   "description": "WeChat tooling for VS Code",
   "author": "Xianqiang Wu <2631640352@qq.com>",
   "icon": "asset/logo.png",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "publisher": "wuxianqiang",
   "scripts": {
     "build:grammar": "tsc -p . && node dist/scripts/build_grammar",
@@ -44,8 +44,9 @@
   },
   "keywords": [
     "小程序",
-    "微信小程序",
+    "微信/支付宝/QQ/字节头条/京东/智能百度",
     "wxml/axml/qml/ttml/jxml/swan",
+    "wxss/acss/qss/css/jxss/js/json",
     "WeChat Snippets"
   ],
   "categories": [
@@ -134,6 +135,19 @@
           ".swan"
         ],
         "configuration": "./languages/vue-html-language-configuration.json"
+      },
+      {
+        "id": "css",
+        "aliases": [
+          "css"
+        ],
+        "extensions": [
+          ".wxss",
+          ".acss",
+          ".qss",
+          ".jxss"
+        ],
+        "configuration": "./languages/vue-postcss-language-configuration.json"
       }
     ],
     "grammars": [

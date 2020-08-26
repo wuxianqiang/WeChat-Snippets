@@ -50,6 +50,8 @@ import { logger } from '../log';
 import { getDefaultVLSConfig, VLSFullConfig, VLSConfig } from '../config';
 import { LanguageId } from '../embeddedSupport/embeddedSupport';
 
+const documentSelector = ['wxml', 'axml', 'qml', 'ttml', 'jxml', 'swan']
+
 export class VLS {
   // @Todo: Remove this and DocumentContext
   private workspacePath: string | undefined;
@@ -175,7 +177,7 @@ export class VLS {
     if (settings.vetur.format.enable === true) {
       if (!this.documentFormatterRegistration) {
         this.documentFormatterRegistration = await this.lspConnection.client.register(DocumentFormattingRequest.type, {
-          documentSelector: ['wxml']
+          documentSelector: documentSelector
         });
       }
     } else {
@@ -474,7 +476,7 @@ export class VLS {
   doValidate(doc: TextDocument): Diagnostic[] {
     // 这是代码校验的入口文件了languageId=wxml
     const diagnostics: Diagnostic[] = [];
-    if (doc.languageId === 'wxml') {
+    if (documentSelector.includes(doc.languageId)) {
       this.languageModes.getAllLanguageModeRangesInDocument(doc).forEach(lmr => {
         if (lmr.mode.doValidation && this.validation[lmr.mode.getId()]) {
           pushAll(diagnostics, lmr.mode.doValidation(doc));
