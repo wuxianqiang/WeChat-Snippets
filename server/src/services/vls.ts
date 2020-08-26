@@ -50,7 +50,7 @@ import { logger } from '../log';
 import { getDefaultVLSConfig, VLSFullConfig, VLSConfig } from '../config';
 import { LanguageId } from '../embeddedSupport/embeddedSupport';
 
-const documentSelector = ['wxml', 'axml', 'qml', 'ttml', 'jxml', 'swan']
+const documentSelector = ['xml', 'wxml', 'axml', 'qml', 'ttml', 'jxml', 'swan']
 
 export class VLS {
   // @Todo: Remove this and DocumentContext

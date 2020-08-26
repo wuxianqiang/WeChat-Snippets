@@ -72,7 +72,7 @@ export async function activate(context: vscode.ExtensionContext) {
     .catch(e => {
       console.log('Client initialization failed');
     });
-  context.subscriptions.push(vscode.languages.registerCompletionItemProvider(['wxml', 'axml', 'qml', 'ttml', 'jxml', 'swan'], {
+  context.subscriptions.push(vscode.languages.registerCompletionItemProvider(['xml', 'wxml', 'axml', 'qml', 'ttml', 'jxml', 'swan'], {
     provideCompletionItems,
     resolveCompletionItem
   }, '1'));

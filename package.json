@@ -4,7 +4,7 @@
   "description": "WeChat tooling for VS Code",
   "author": "Xianqiang Wu <2631640352@qq.com>",
   "icon": "asset/logo.png",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "wuxianqiang",
   "scripts": {
     "build:grammar": "tsc -p . && node dist/scripts/build_grammar",
@@ -60,82 +60,11 @@
     "vscode-languageserver-types": "^3.15.0-next.9"
   },
   "activationEvents": [
-    "onLanguage:wxml",
-    "onLanguage:axml",
-    "onLanguage:qml",
-    "onLanguage:ttml",
-    "onLanguage:jxml",
-    "onLanguage:swan"
+    "onLanguage:xml"
   ],
   "main": "./dist/client/vueMain",
   "contributes": {
     "languages": [
-      {
-        "id": "wxml",
-        "aliases": [
-          "Wxml",
-          "wxml"
-        ],
-        "extensions": [
-          ".wxml"
-        ],
-        "configuration": "./languages/vue-html-language-configuration.json"
-      },
-      {
-        "id": "axml",
-        "aliases": [
-          "Axml",
-          "axml"
-        ],
-        "extensions": [
-          ".axml"
-        ],
-        "configuration": "./languages/vue-html-language-configuration.json"
-      },
-      {
-        "id": "qml",
-        "aliases": [
-          "Qml",
-          "qml"
-        ],
-        "extensions": [
-          ".qml"
-        ],
-        "configuration": "./languages/vue-html-language-configuration.json"
-      },
-      {
-        "id": "ttml",
-        "aliases": [
-          "Ttml",
-          "ttml"
-        ],
-        "extensions": [
-          ".ttml"
-        ],
-        "configuration": "./languages/vue-html-language-configuration.json"
-      },
-      {
-        "id": "jxml",
-        "aliases": [
-          "Jxml",
-          "jxml"
-        ],
-        "extensions": [
-          ".jxml"
-        ],
-        "configuration": "./languages/vue-html-language-configuration.json"
-      },
-      {
-        "id": "swan",
-        "aliases": [
-          "Swan",
-          "swan"
-        ],
-        "extensions": [
-          ".swan"
-        ],
-        "configuration": "./languages/vue-html-language-configuration.json"
-      },
       {
         "id": "css",
         "aliases": [
@@ -148,51 +77,26 @@
           ".jxss"
         ],
         "configuration": "./languages/vue-postcss-language-configuration.json"
+      },
+      {
+        "id": "xml",
+        "aliases": [
+          "XML"
+        ],
+        "extensions": [
+          ".wxml",
+          ".axml",
+          ".qml",
+          ".ttml",
+          ".jxml",
+          ".swan"
+        ],
+        "configuration": "./languages/vue-postcss-language-configuration.json"
       }
     ],
     "grammars": [
       {
-        "language": "wxml",
-        "scopeName": "text.html.vue-html",
-        "path": "./syntaxes/vue-html.tmLanguage.json",
-        "embeddedLanguages": {
-          "source.js": "javascript"
-        }
-      },
-      {
-        "language": "axml",
-        "scopeName": "text.html.vue-html",
-        "path": "./syntaxes/vue-html.tmLanguage.json",
-        "embeddedLanguages": {
-          "source.js": "javascript"
-        }
-      },
-      {
-        "language": "qml",
-        "scopeName": "text.html.vue-html",
-        "path": "./syntaxes/vue-html.tmLanguage.json",
-        "embeddedLanguages": {
-          "source.js": "javascript"
-        }
-      },
-      {
-        "language": "ttml",
-        "scopeName": "text.html.vue-html",
-        "path": "./syntaxes/vue-html.tmLanguage.json",
-        "embeddedLanguages": {
-          "source.js": "javascript"
-        }
-      },
-      {
-        "language": "jxml",
-        "scopeName": "text.html.vue-html",
-        "path": "./syntaxes/vue-html.tmLanguage.json",
-        "embeddedLanguages": {
-          "source.js": "javascript"
-        }
-      },
-      {
-        "language": "swan",
+        "language": "xml",
         "scopeName": "text.html.vue-html",
         "path": "./syntaxes/vue-html.tmLanguage.json",
         "embeddedLanguages": {

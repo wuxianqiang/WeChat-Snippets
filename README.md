@@ -1,6 +1,6 @@
 # WeChat Snippets for Visual Studio Code
 
-> ⚠️ 注意：请先安装Vetur插件再安装此插件
+> ⚠️ 注意：请先安装Vetur插件和Prettier插件再安装此插件
 
 
 ## Features
