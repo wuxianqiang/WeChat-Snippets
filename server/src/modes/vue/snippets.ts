@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { CompletionItem, InsertTextFormat, CompletionItemKind, MarkupContent } from 'vscode-languageserver-types';
 
-type SnippetSource = 'workspace' | 'user' | 'vetur';
+type SnippetSource = 'workspace' | 'user' | 'applets';
 type SnippetType = 'file' | 'template' | 'style' | 'script' | 'custom';
 interface Snippet {
   source: SnippetSource;
@@ -15,7 +15,7 @@ interface Snippet {
 export interface ScaffoldSnippetSources {
   workspace: string | undefined;
   user: string | undefined;
-  vetur: string | undefined;
+  applets: string | undefined;
 }
 
 export class SnippetManager {
@@ -24,7 +24,7 @@ export class SnippetManager {
   constructor(workspacePath: string, globalSnippetDir?: string) {
     const workspaceSnippets = loadAllSnippets(path.resolve(workspacePath, '.vscode/vetur/snippets'), 'workspace');
     const userSnippets = globalSnippetDir ? loadAllSnippets(globalSnippetDir, 'user') : [];
-    const veturSnippets = loadAllSnippets(path.resolve(__dirname, './veturSnippets'), 'vetur');
+    const veturSnippets = loadAllSnippets(path.resolve(__dirname, './veturSnippets'), 'applets');
 
     this._snippets = [...workspaceSnippets, ...userSnippets, ...veturSnippets];
   }
@@ -125,7 +125,7 @@ function computeSortTextPrefix(snippet: Snippet) {
   const s = {
     workspace: 0,
     user: 1,
-    vetur: 2
+    applets: 2
   }[snippet.source];
 
   const t = {

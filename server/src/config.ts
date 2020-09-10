@@ -12,10 +12,13 @@ export interface VLSFormatConfig {
     tabSize: number;
     useTabs: boolean;
   };
+  applets: {
+    languages: string
+  }
 }
 
 export interface VLSConfig {
-  vetur: {
+  applets: {
     useWorkspaceDependencies: boolean;
     completion: {
       autoImport: boolean;
@@ -24,7 +27,7 @@ export interface VLSConfig {
       scaffoldSnippetSources: {
         workspace: string;
         user: string;
-        vetur: string;
+        applets: string;
       };
     };
     grammar: {
@@ -76,7 +79,7 @@ export interface VLSFullConfig extends VLSConfig {
 
 export function getDefaultVLSConfig(): VLSConfig {
   return {
-    vetur: {
+    applets: {
       useWorkspaceDependencies: false,
       validation: {
         template: true,
@@ -90,7 +93,7 @@ export function getDefaultVLSConfig(): VLSConfig {
         scaffoldSnippetSources: {
           workspace: '💼',
           user: '🗒️',
-          vetur: '✌'
+          applets: '✌'
         }
       },
       grammar: {

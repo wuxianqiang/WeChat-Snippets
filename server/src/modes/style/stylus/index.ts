@@ -65,7 +65,7 @@ export function getStylusMode(documentRegions: LanguageModelCache<VueDocumentReg
       return stylusHover(embedded, position);
     },
     format(document, range, formatParams) {
-      if (config.vetur.format.defaultFormatter.stylus === 'none') {
+      if (config.applets.format.defaultFormatter.stylus === 'none') {
         return [];
       }
 
@@ -73,7 +73,7 @@ export function getStylusMode(documentRegions: LanguageModelCache<VueDocumentReg
 
       const inputText = document.getText(range);
 
-      const vlsFormatConfig = config.vetur.format as VLSFormatConfig;
+      const vlsFormatConfig = config.applets.format as VLSFormatConfig;
       const tabStopChar = vlsFormatConfig.options.useTabs ? '\t' : ' '.repeat(vlsFormatConfig.options.tabSize);
 
       // Note that this would have been `document.eol` ideally

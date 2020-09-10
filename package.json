@@ -4,7 +4,7 @@
   "description": "WeChat tooling for VS Code",
   "author": "Xianqiang Wu <2631640352@qq.com>",
   "icon": "asset/logo.png",
-  "version": "0.1.1",
+  "version": "1.0.1",
   "publisher": "wuxianqiang",
   "scripts": {
     "build:grammar": "tsc -p . && node dist/scripts/build_grammar",
@@ -40,7 +40,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vuejs/vetur.git"
+    "url": "https://github.com/wuxianqiang/WeChat-Snippets"
   },
   "keywords": [
     "小程序",
@@ -56,8 +56,14 @@
     "vscode": "^1.46.0"
   },
   "dependencies": {
+    "alipay-json": "^1.0.0",
+    "baidu-json": "^1.0.0",
+    "bytedance-json": "^1.0.0",
+    "jd-json": "^1.0.0",
+    "qq-json": "^1.0.0",
     "vscode-languageclient": "^6.1.3",
-    "vscode-languageserver-types": "^3.15.0-next.9"
+    "vscode-languageserver-types": "^3.15.0-next.9",
+    "weixin-json": "^1.0.0"
   },
   "activationEvents": [
     "onLanguage:xml"
@@ -74,7 +80,8 @@
           ".wxss",
           ".acss",
           ".qss",
-          ".jxss"
+          ".jxss",
+          ".ttss"
         ],
         "configuration": "./languages/vue-postcss-language-configuration.json"
       },
@@ -105,25 +112,25 @@
       }
     ],
     "configuration": {
-      "title": "Vetur",
+      "title": "小程序",
       "properties": {
-        "vetur.useWorkspaceDependencies": {
+        "applets.useWorkspaceDependencies": {
           "type": "boolean",
           "default": false,
           "description": "Use dependencies from workspace. Currently only for TypeScript.",
           "scope": "application"
         },
-        "vetur.completion.autoImport": {
+        "applets.completion.autoImport": {
           "type": "boolean",
           "default": true,
           "description": "Include completion for module export and auto import them"
         },
-        "vetur.completion.scaffoldSnippetSources": {
+        "applets.completion.scaffoldSnippetSources": {
           "type": "object",
           "default": {
             "workspace": "💼",
             "user": "🗒️",
-            "vetur": "✌"
+            "applets": "✌"
           },
           "properties": {
             "workspace": {
@@ -136,15 +143,15 @@
               "default": "🗒️",
               "description": "Show Scaffold Snippets from `<USER-DATA-DIR>/User/snippets/vetur`."
             },
-            "vetur": {
+            "applets": {
               "type": "string",
               "default": "✌",
               "description": "Show Scaffold Snippets bundled in Vetur."
             }
           },
-          "description": "Where Vetur source Scaffold Snippets from and how to indicate them. Set a source to \"\" to disable it.\n\n- workspace: `<WORKSPACE>/.vscode/vetur/snippets`.\n- user: `<USER-DATA-DIR>/User/snippets/vetur`.\n- vetur: Bundled in Vetur.\n\nThe default is:\n```\n\"vetur.completion.scaffoldSnippetSources\": {\n  \"workspace\": \"💼\",\n  \"user\": \"🗒️\",\n  \"vetur\": \"✌\"\n}\n```\n\nAlternatively, you can do:\n\n```\n\"vetur.completion.scaffoldSnippetSources\": {\n  \"workspace\": \"(W)\",\n  \"user\": \"(U)\",\n  \"vetur\": \"(V)\"\n}\n```\n\nRead more: https://vuejs.github.io/vetur/snippet.html."
+          "description": "Where Vetur source Scaffold Snippets from and how to indicate them. Set a source to \"\" to disable it.\n\n- workspace: `<WORKSPACE>/.vscode/vetur/snippets`.\n- user: `<USER-DATA-DIR>/User/snippets/vetur`.\n- vetur: Bundled in applets.\n\nThe default is:\n```\n\"applets.completion.scaffoldSnippetSources\": {\n  \"workspace\": \"💼\",\n  \"user\": \"🗒️\",\n  \"applets\": \"✌\"\n}\n```\n\nAlternatively, you can do:\n\n```\n\"applets.completion.scaffoldSnippetSources\": {\n  \"workspace\": \"(W)\",\n  \"user\": \"(U)\",\n  \"vetur\": \"(V)\"\n}\n```\n\n"
         },
-        "vetur.completion.tagCasing": {
+        "applets.completion.tagCasing": {
           "type": "string",
           "default": "kebab",
           "enum": [
@@ -157,7 +164,7 @@
           ],
           "description": "Casing conversion for tag completion"
         },
-        "vetur.grammar.customBlocks": {
+        "applets.grammar.customBlocks": {
           "type": "object",
           "default": {
             "docs": "md",
@@ -165,37 +172,37 @@
           },
           "description": "Mapping from custom block tag name to language name. Used for generating grammar to support syntax highlighting for custom blocks."
         },
-        "vetur.validation.template": {
+        "applets.validation.template": {
           "type": "boolean",
           "default": true,
           "description": "Validate vue-html in <template> using eslint-plugin-vue"
         },
-        "vetur.validation.style": {
+        "applets.validation.style": {
           "type": "boolean",
           "default": true,
           "description": "Validate css/scss/less/postcss in <style>"
         },
-        "vetur.validation.script": {
+        "applets.validation.script": {
           "type": "boolean",
           "default": true,
           "description": "Validate js/ts in <script>"
         },
-        "vetur.format.enable": {
+        "applets.format.enable": {
           "type": "boolean",
           "default": true,
           "description": "Enable/disable the Vetur document formatter."
         },
-        "vetur.format.options.tabSize": {
+        "applets.format.options.tabSize": {
           "type": "number",
           "default": 2,
           "description": "Number of spaces per indentation level. Inherited by all formatters."
         },
-        "vetur.format.options.useTabs": {
+        "applets.format.options.useTabs": {
           "type": "boolean",
           "default": false,
           "description": "Use tabs for indentation. Inherited by all formatters."
         },
-        "vetur.format.defaultFormatter.html": {
+        "applets.format.defaultFormatter.html": {
           "type": "string",
           "default": "prettyhtml",
           "enum": [
@@ -212,7 +219,7 @@
           ],
           "description": "Default formatter for <template> region"
         },
-        "vetur.format.defaultFormatter.pug": {
+        "applets.format.defaultFormatter.pug": {
           "type": "string",
           "default": "prettier",
           "enum": [
@@ -225,7 +232,7 @@
           ],
           "description": "Default formatter for <template lang='pug'> region"
         },
-        "vetur.format.defaultFormatter.css": {
+        "applets.format.defaultFormatter.css": {
           "type": "string",
           "default": "prettier",
           "enum": [
@@ -238,7 +245,7 @@
           ],
           "description": "Default formatter for <style> region"
         },
-        "vetur.format.defaultFormatter.postcss": {
+        "applets.format.defaultFormatter.postcss": {
           "type": "string",
           "default": "prettier",
           "enum": [
@@ -251,7 +258,7 @@
           ],
           "description": "Default formatter for <style lang='postcss'> region"
         },
-        "vetur.format.defaultFormatter.scss": {
+        "applets.format.defaultFormatter.scss": {
           "type": "string",
           "default": "prettier",
           "enum": [
@@ -264,7 +271,7 @@
           ],
           "description": "Default formatter for <style lang='scss'> region"
         },
-        "vetur.format.defaultFormatter.sass": {
+        "applets.format.defaultFormatter.sass": {
           "type": "string",
           "default": "sass-formatter",
           "enum": [
@@ -277,7 +284,7 @@
           ],
           "description": "Default formatter for <style lang='sass'> region"
         },
-        "vetur.format.defaultFormatter.less": {
+        "applets.format.defaultFormatter.less": {
           "type": "string",
           "default": "prettier",
           "enum": [
@@ -290,7 +297,7 @@
           ],
           "description": "Default formatter for <style lang='less'> region"
         },
-        "vetur.format.defaultFormatter.stylus": {
+        "applets.format.defaultFormatter.stylus": {
           "type": "string",
           "default": "stylus-supremacy",
           "enum": [
@@ -303,7 +310,7 @@
           ],
           "description": "Default formatter for <style lang='stylus'> region"
         },
-        "vetur.format.defaultFormatter.js": {
+        "applets.format.defaultFormatter.js": {
           "type": "string",
           "default": "prettier",
           "enum": [
@@ -320,7 +327,7 @@
           ],
           "description": "Default formatter for <script> region"
         },
-        "vetur.format.defaultFormatter.ts": {
+        "applets.format.defaultFormatter.ts": {
           "type": "string",
           "default": "prettier",
           "enum": [
@@ -336,7 +343,7 @@
           ],
           "description": "Default formatter for <script> region"
         },
-        "vetur.format.defaultFormatterOptions": {
+        "applets.format.defaultFormatterOptions": {
           "type": "object",
           "properties": {
             "prettier": {
@@ -388,17 +395,17 @@
           },
           "description": "Options for all default formatters"
         },
-        "vetur.format.styleInitialIndent": {
+        "applets.format.styleInitialIndent": {
           "type": "boolean",
           "default": false,
           "description": "Whether to have initial indent for <style> region"
         },
-        "vetur.format.scriptInitialIndent": {
+        "applets.format.scriptInitialIndent": {
           "type": "boolean",
           "default": false,
           "description": "Whether to have initial indent for <script> region"
         },
-        "vetur.trace.server": {
+        "applets.trace.server": {
           "type": "string",
           "enum": [
             "off",
@@ -408,17 +415,17 @@
           "default": "off",
           "description": "Traces the communication between VS Code and Vue Language Server."
         },
-        "vetur.dev.vlsPath": {
+        "applets.dev.vlsPath": {
           "type": "string",
           "description": "Path to VLS for Vetur developers. There are two ways of using it. \n\n1. Clone vuejs/vetur from GitHub, build it and point it to the ABSOLUTE path of `/server`.\n2. `yarn global add vue-language-server` and point Vetur to the installed location (`yarn global dir` + node_modules/vue-language-server)",
           "scope": "machine"
         },
-        "vetur.dev.vlsPort": {
+        "applets.dev.vlsPort": {
           "type": "number",
           "description": "The port that VLS listens to. Can be used for attaching to the VLS Node process for debugging / profiling.",
           "default": -1
         },
-        "vetur.dev.logLevel": {
+        "applets.dev.logLevel": {
           "type": "string",
           "description": "Log level for VLS",
           "default": "INFO",
@@ -431,10 +438,31 @@
             "Log info and debug messages."
           ]
         },
-        "vetur.experimental.templateInterpolationService": {
+        "applets.experimental.templateInterpolationService": {
           "type": "boolean",
           "default": false,
           "description": "Enable template interpolation service that offers diagnostics / hover / definition / references."
+        },
+        "applets.languages": {
+          "type": "string",
+          "default": "微信小程序",
+          "enum": [
+            "微信小程序",
+            "支付宝小程序",
+            "QQ小程序",
+            "京东小程序",
+            "百度小程序",
+            "字节小程序"
+          ],
+          "enumDescriptions": [
+            "使用微信小程序指令的语法",
+            "使用支付宝小程序指令的语法",
+            "使用QQ小程序指令的语法",
+            "使用京东小程序指令的语法",
+            "使用百度小程序指令的语法",
+            "使用字节小程序指令的语法"
+          ],
+          "description": "配置小程序的类型"
         }
       }
     }

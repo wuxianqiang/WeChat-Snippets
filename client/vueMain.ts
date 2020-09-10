@@ -11,7 +11,8 @@ import {
 } from './commands/virtualFileCommand';
 import { getGlobalSnippetDir } from './userSnippetDir';
 import { generateOpenUserScaffoldSnippetFolderCommand } from './commands/openUserScaffoldSnippetFolderCommand';
-
+const config = vscode.workspace.getConfiguration();
+const languages = config.applets.languages
 export async function activate(context: vscode.ExtensionContext) {
   const isInsiders = vscode.env.appName.includes('Insiders');
   const globalSnippetDir = getGlobalSnippetDir(isInsiders);
@@ -98,54 +99,61 @@ function registerCustomLSPCommands(context: vscode.ExtensionContext, client: Lan
     vscode.commands.registerCommand('vetur.showCorrespondingVirtualFile', generateShowVirtualFileCommand(client))
   );
 }
-
-// 微信的原始组件
-const keys: string[] = [
-  'cover-image',
-  'cover-view',
-  'match-media',
-  'movable-area',
-  'movable-view',
-  'scroll-view',
-  'swiper',
-  'swiper-item',
-  'view',
-  'icon',
-  'progress',
-  'rich-text',
-  'text',
-  'button',
-  'checkbox',
-  'checkbox-group',
-  'editor',
-  'form',
-  'input',
-  'label',
-  'picker',
-  'picker-view',
-  'picker-view-column',
-  'radio',
-  'radio-group',
-  'slider',
-  'switch',
-  'textarea',
-  'functional-page-navigator',
-  'navigator',
-  'audio',
-  'camera',
-  'image',
-  'live-player',
-  'live-pusher',
-  'video',
-  'voip-room',
-  'map',
-  'canvas',
-  'ad',
-  'ad-custom',
-  'official-account',
-  'open-data',
-  'web-view'
-]
+let keys: string[] = []
+if (languages === '微信小程序') {
+  const list = require('weixin-json/wx.json')
+  list.forEach((item: any) => {
+    const key = Object.keys(item)[0]
+    if (key) {
+      keys.push(key)
+    }
+  })
+}
+if (languages === '支付宝小程序') {
+  const list = require('alipay-json/pay.json')
+  list.forEach((item: any) => {
+    const key = Object.keys(item)[0]
+    if (key) {
+      keys.push(key)
+    }
+  })
+}
+if (languages === '百度小程序') {
+  const list = require('baidu-json/bd.json')
+  list.forEach((item: any) => {
+    const key = Object.keys(item)[0]
+    if (key) {
+      keys.push(key)
+    }
+  })
+}
+if (languages === 'QQ小程序') {
+  const list = require('qq-json/qq.json')
+  list.forEach((item: any) => {
+    const key = Object.keys(item)[0]
+    if (key) {
+      keys.push(key)
+    }
+  })
+}
+if (languages === '字节小程序') {
+  const list = require('bytedance-json/bytedance.json')
+  list.forEach((item: any) => {
+    const key = Object.keys(item)[0]
+    if (key) {
+      keys.push(key)
+    }
+  })
+}
+if (languages === '京东小程序') {
+  const list = require('jd-json/jd.json')
+  list.forEach((item: any) => {
+    const key = Object.keys(item)[0]
+    if (key) {
+      keys.push(key)
+    }
+  })
+}
 
 function craeteCompletion (key: string) {
   let item = new vscode.CompletionItem(key, vscode.CompletionItemKind.Property)

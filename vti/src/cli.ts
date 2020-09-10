@@ -50,7 +50,7 @@ async function prepareClientConnection(workspaceUri: Uri) {
     async (params: InitializeParams): Promise<InitializeResult> => {
       await vls.init(params);
 
-      console.log('Vetur initialized');
+      console.log('小程序服务的加载完成');
 
       return {
         capabilities: vls.capabilities

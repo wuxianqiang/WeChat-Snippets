@@ -225,7 +225,7 @@ export async function getJavascriptMode(
           kind: 'markdown',
           value: tsModule.displayPartsToString(details.documentation)
         };
-        if (details.codeActions && config.vetur.completion.autoImport) {
+        if (details.codeActions && config.applets.completion.autoImport) {
           const textEdits = convertCodeAction(doc, details.codeActions, firstScriptRegion);
           item.additionalTextEdits = textEdits;
 
@@ -474,16 +474,16 @@ export async function getJavascriptMode(
 
       const defaultFormatter =
         scriptDoc.languageId === 'javascript'
-          ? config.vetur.format.defaultFormatter.js
-          : config.vetur.format.defaultFormatter.ts;
+          ? config.applets.format.defaultFormatter.js
+          : config.applets.format.defaultFormatter.ts;
 
       if (defaultFormatter === 'none') {
         return [];
       }
 
       const parser = scriptDoc.languageId === 'javascript' ? 'babel' : 'typescript';
-      const needInitialIndent = config.vetur.format.scriptInitialIndent;
-      const vlsFormatConfig: VLSFormatConfig = config.vetur.format;
+      const needInitialIndent = config.applets.format.scriptInitialIndent;
+      const vlsFormatConfig: VLSFormatConfig = config.applets.format;
 
       if (
         defaultFormatter === 'prettier' ||
@@ -663,9 +663,9 @@ function convertOptions(
 
 function getFormatCodeSettings(config: any): ts.FormatCodeSettings {
   return {
-    tabSize: config.vetur.format.options.tabSize,
-    indentSize: config.vetur.format.options.tabSize,
-    convertTabsToSpaces: !config.vetur.format.options.useTabs
+    tabSize: config.applets.format.options.tabSize,
+    indentSize: config.applets.format.options.tabSize,
+    convertTabsToSpaces: !config.applets.format.options.useTabs
   };
 }
 

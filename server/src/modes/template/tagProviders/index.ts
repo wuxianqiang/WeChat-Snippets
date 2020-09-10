@@ -2,7 +2,12 @@ import { IHTMLTagProvider } from './common';
 import { getHTML5TagProvider } from './htmlTags';
 import { getVueTagProvider } from './vueTags';
 import { getRouterTagProvider } from './routerTags';
-import { getWXMLTagProvider } from './wxTags';
+import { getWeixinTagProvider } from './weixinTags'
+import { getAlipayTagProvider } from './alipayTags'
+import { getByteTagProvider } from './bytedanceTags'
+import { getJdTagProvider } from './jdTags'
+import { getQqTagProvider } from './qqTags'
+import { getBaiduTagProvider } from './baiduTags'
 import {
   elementTagProvider,
   onsenTagProvider,
@@ -18,12 +23,13 @@ import * as ts from 'typescript';
 import * as fs from 'fs';
 import { join } from 'path';
 import { getNuxtTagProvider } from './nuxtTags';
+import { VLSFormatConfig } from '../../../config';
+
 
 export let allTagProviders: IHTMLTagProvider[] = [
   getHTML5TagProvider(),
   getVueTagProvider(),
   getRouterTagProvider(),
-  getWXMLTagProvider(),
   elementTagProvider,
   onsenTagProvider,
   bootstrapTagProvider,
@@ -145,6 +151,24 @@ export function getTagProviderSettings(workspacePath: string | null | undefined)
   return settings;
 }
 
-export function getEnabledTagProviders(tagProviderSetting: CompletionConfiguration) {
+export function getEnabledTagProviders(tagProviderSetting: CompletionConfiguration, config: VLSFormatConfig) {
+  if (config.applets && config.applets.languages === '微信小程序') {
+    allTagProviders.push(getWeixinTagProvider())
+  }
+  if (config.applets && config.applets.languages === '支付宝小程序') {
+    allTagProviders.push(getAlipayTagProvider())
+  }
+  if (config.applets && config.applets.languages === '字节小程序') {
+    allTagProviders.push(getByteTagProvider())
+  }
+  if (config.applets && config.applets.languages === '京东小程序') {
+    allTagProviders.push(getJdTagProvider())
+  }
+  if (config.applets && config.applets.languages === '百度小程序') {
+    allTagProviders.push(getBaiduTagProvider())
+  }
+  if (config.applets && config.applets.languages === 'QQ小程序') {
+    allTagProviders.push(getQqTagProvider())
+  }
   return allTagProviders.filter(p => tagProviderSetting[p.getId()] !== false);
 }

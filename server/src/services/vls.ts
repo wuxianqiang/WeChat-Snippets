@@ -100,7 +100,7 @@ export class VLS {
     this.workspacePath = workspacePath;
 
     await this.vueInfoService.init(this.languageModes);
-    await this.dependencyService.init(workspacePath, config.vetur.useWorkspaceDependencies);
+    await this.dependencyService.init(workspacePath, config.applets.useWorkspaceDependencies);
 
     await this.languageModes.init(
       workspacePath,
@@ -174,7 +174,8 @@ export class VLS {
 
   private async setupDynamicFormatters(settings: any) {
     // 开始为指定的扩展名注册格式化
-    if (settings.vetur.format.enable === true) {
+    if (!settings.applets) return
+    if (settings.applets.format.enable === true) {
       if (!this.documentFormatterRegistration) {
         this.documentFormatterRegistration = await this.lspConnection.client.register(DocumentFormattingRequest.type, {
           documentSelector: documentSelector
@@ -215,7 +216,8 @@ export class VLS {
   }
 
   configure(config: VLSConfig): void {
-    const veturValidationOptions = config.vetur.validation;
+    if (!config.applets) return
+    const veturValidationOptions = config.applets.validation;
     this.validation['vue-html'] = veturValidationOptions.template;
     this.validation.css = veturValidationOptions.style;
     this.validation.postcss = veturValidationOptions.style;
@@ -229,7 +231,7 @@ export class VLS {
       }
     });
 
-    logger.setLevel(config.vetur.dev.logLevel);
+    logger.setLevel(config.applets.dev.logLevel);
   }
 
   /**

@@ -15,7 +15,7 @@ export function getPugMode(): LanguageMode {
       config = c;
     },
     format(document, currRange, formattingOptions) {
-      if (config.vetur.format.defaultFormatter['pug'] === 'none') {
+      if (config.applets.format.defaultFormatter['pug'] === 'none') {
         return [];
       }
 
@@ -25,7 +25,7 @@ export function getPugMode(): LanguageMode {
         value,
         getFileFsPath(document.uri),
         range,
-        config.vetur.format as VLSFormatConfig,
+        config.applets.format as VLSFormatConfig,
         'pug',
         false
       );

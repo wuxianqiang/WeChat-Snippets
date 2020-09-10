@@ -49,6 +49,7 @@ export function initializeLanguageClient(vlsModulePath: string, globalSnippetDir
         'typescript',
         'prettier',
         'stylusSupremacy',
+        'applets'
       ],
       fileEvents: vscode.workspace.createFileSystemWatcher('{**/*.js,**/*.ts}', false, false, true),
     },

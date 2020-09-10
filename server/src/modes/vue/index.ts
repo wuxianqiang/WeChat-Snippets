@@ -9,7 +9,7 @@ export function getVueMode(workspacePath: string, globalSnippetDir?: string): La
   let scaffoldSnippetSources: ScaffoldSnippetSources = {
     workspace: '💼',
     user: '🗒️',
-    vetur: '✌'
+    applets: '✌'
   };
 
   return {
@@ -18,15 +18,15 @@ export function getVueMode(workspacePath: string, globalSnippetDir?: string): La
     },
     configure(c) {
       config = c;
-      if (c.vetur.completion['scaffoldSnippetSources']) {
-        scaffoldSnippetSources = c.vetur.completion['scaffoldSnippetSources'];
+      if (c.applets.completion['scaffoldSnippetSources']) {
+        scaffoldSnippetSources = c.applets.completion['scaffoldSnippetSources'];
       }
     },
     doComplete(document, position) {
       if (
         scaffoldSnippetSources['workspace'] === '' &&
         scaffoldSnippetSources['user'] === '' &&
-        scaffoldSnippetSources['vetur'] === ''
+        scaffoldSnippetSources['applets'] === ''
       ) {
         return { isIncomplete: false, items: [] };
       }

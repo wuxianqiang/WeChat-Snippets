@@ -36,7 +36,7 @@ export class HTMLMode implements LanguageMode {
     private vueInfoService?: VueInfoService
   ) {
     this.tagProviderSettings = getTagProviderSettings(workspacePath);
-    this.enabledTagProviders = getEnabledTagProviders(this.tagProviderSettings);
+    this.enabledTagProviders = getEnabledTagProviders(this.tagProviderSettings, this.config);
     this.embeddedDocuments = getLanguageModelCache<TextDocument>(10, 60, (document) =>
       documentRegions.refreshAndGet(document).getSingleLanguageDocument('vue-html')
     );
@@ -47,8 +47,8 @@ export class HTMLMode implements LanguageMode {
   }
 
   configure(c: VLSFullConfig) {
-    this.enabledTagProviders = getEnabledTagProviders(this.tagProviderSettings);
     this.config = c;
+    this.enabledTagProviders = getEnabledTagProviders(this.tagProviderSettings, this.config);
   }
 
   doValidation(document: TextDocument) {
@@ -84,7 +84,7 @@ export class HTMLMode implements LanguageMode {
   }
   format(document: TextDocument, range: Range, formattingOptions: FormattingOptions) {
     // 每次格式化都会调用这个函数
-    return htmlFormat(document, range, this.config.vetur.format as VLSFormatConfig);
+    return htmlFormat(document, range, this.config.applets.format as VLSFormatConfig);
   }
   findDefinition(document: TextDocument, position: Position) {
     const embedded = this.embeddedDocuments.refreshAndGet(document);

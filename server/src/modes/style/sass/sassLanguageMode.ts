@@ -32,7 +32,7 @@ export class SassLanguageMode implements LanguageMode {
 
     Object.assign(sassConfig, this.config.sass.format);
 
-    if (this.config.vetur.format.defaultFormatter.sass === 'sass-formatter') {
+    if (this.config.applets.format.defaultFormatter.sass === 'sass-formatter') {
       return [TextEdit.replace(range, SassFormatter.Format(document.getText(range), sassConfig))];
     }
     return [];
