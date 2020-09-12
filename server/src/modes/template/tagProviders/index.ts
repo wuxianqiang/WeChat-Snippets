@@ -27,13 +27,13 @@ import { VLSFormatConfig } from '../../../config';
 
 
 export let allTagProviders: IHTMLTagProvider[] = [
-  getHTML5TagProvider(),
-  getVueTagProvider(),
-  getRouterTagProvider(),
-  elementTagProvider,
-  onsenTagProvider,
-  bootstrapTagProvider,
-  gridsomeTagProvider
+  // getHTML5TagProvider(),
+  // getVueTagProvider(),
+  // getRouterTagProvider(),
+  // elementTagProvider,
+  // onsenTagProvider,
+  // bootstrapTagProvider,
+  // gridsomeTagProvider
 ];
 
 export interface CompletionConfiguration {
@@ -152,23 +152,24 @@ export function getTagProviderSettings(workspacePath: string | null | undefined)
 }
 
 export function getEnabledTagProviders(tagProviderSetting: CompletionConfiguration, config: VLSFormatConfig) {
+  let hasVal = allTagProviders.some(item => item.getId() === 'wxml')
   if (config.applets && config.applets.languages === '微信小程序') {
-    allTagProviders.push(getWeixinTagProvider())
+    !hasVal && allTagProviders.push(getWeixinTagProvider())
   }
   if (config.applets && config.applets.languages === '支付宝小程序') {
-    allTagProviders.push(getAlipayTagProvider())
+    !hasVal && allTagProviders.push(getAlipayTagProvider())
   }
   if (config.applets && config.applets.languages === '字节小程序') {
-    allTagProviders.push(getByteTagProvider())
+    !hasVal && allTagProviders.push(getByteTagProvider())
   }
   if (config.applets && config.applets.languages === '京东小程序') {
-    allTagProviders.push(getJdTagProvider())
+    !hasVal && allTagProviders.push(getJdTagProvider())
   }
   if (config.applets && config.applets.languages === '百度小程序') {
-    allTagProviders.push(getBaiduTagProvider())
+    !hasVal && allTagProviders.push(getBaiduTagProvider())
   }
   if (config.applets && config.applets.languages === 'QQ小程序') {
-    allTagProviders.push(getQqTagProvider())
+    !hasVal && allTagProviders.push(getQqTagProvider())
   }
   return allTagProviders.filter(p => tagProviderSetting[p.getId()] !== false);
 }
