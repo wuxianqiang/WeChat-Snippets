@@ -2,7 +2,7 @@ import { platform } from 'os';
 import Uri from 'vscode-uri';
 
 /**
- * Vetur mainly deals with paths / uris from two objects
+ * applets mainly deals with paths / uris from two objects
  *
  * - `TextDocument` from `vscode-languageserver`
  * - `SourceFile` from `typescript`

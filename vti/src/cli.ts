@@ -127,7 +127,7 @@ async function getDiagnostics(workspaceUri: Uri) {
   const myArgs = process.argv.slice(2);
   // no args
   if (myArgs.length === 0) {
-    console.log('Vetur Terminal Interface');
+    console.log('applets Terminal Interface');
     console.log('');
     console.log('Usage:');
     console.log('');
@@ -136,14 +136,14 @@ async function getDiagnostics(workspaceUri: Uri) {
   }
   // vls diagnostics
   else if (myArgs[0] === 'diagnostics') {
-    console.log('Getting Vetur diagnostics');
+    console.log('Getting applets diagnostics');
     let workspaceUri;
 
     if (myArgs[1]) {
-      console.log(`Loading Vetur in workspace path: ${myArgs[1]}`);
+      console.log(`Loading applets in workspace path: ${myArgs[1]}`);
       workspaceUri = Uri.file(myArgs[1]);
     } else {
-      console.log(`Loading Vetur in current directory: ${process.cwd()}`);
+      console.log(`Loading applets in current directory: ${process.cwd()}`);
       workspaceUri = Uri.file(process.cwd());
     }
 

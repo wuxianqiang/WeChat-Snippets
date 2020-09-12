@@ -24,7 +24,7 @@ export function getStylusMode(documentRegions: LanguageModelCache<VueDocumentReg
   return {
     getId: () => 'stylus',
     configure(c) {
-      baseIndentShifted = _.get(c, 'vetur.format.styleInitialIndent', false);
+      baseIndentShifted = _.get(c, 'applets.format.styleInitialIndent', false);
       config = c;
     },
     onDocumentRemoved() {},
@@ -88,7 +88,7 @@ export function getStylusMode(documentRegions: LanguageModelCache<VueDocumentReg
         }
       }
 
-      // Add one more indentation when `vetur.format.styleInitialIndent` is set to `true`
+      // Add one more indentation when `applets.format.styleInitialIndent` is set to `true`
       if (baseIndentShifted) {
         baseIndent += tabStopChar;
       }

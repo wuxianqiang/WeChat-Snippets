@@ -128,7 +128,7 @@ export async function getJavascriptMode(
           message: tsModule.flattenDiagnosticMessageText(diag.messageText, '\n'),
           tags,
           code: diag.code,
-          source: 'Vetur'
+          source: 'applets'
         };
       });
     },
@@ -146,7 +146,7 @@ export async function getJavascriptMode(
       }
       const completions = service.getCompletionsAtPosition(fileFsPath, offset, {
         includeCompletionsWithInsertText: true,
-        includeCompletionsForModuleExports: _.get(config, ['vetur', 'completion', 'autoImport'])
+        includeCompletionsForModuleExports: _.get(config, ['applets', 'completion', 'autoImport'])
       });
       if (!completions) {
         return { isIncomplete: false, items: [] };
@@ -582,7 +582,7 @@ function collectRefactoringCommands(
   }
   for (const action of actions) {
     result.push({
-      command: 'vetur.chooseTypeScriptRefactoring',
+      command: 'applets.chooseTypeScriptRefactoring',
       title: action.description,
       arguments: [action]
     });
@@ -603,7 +603,7 @@ function collectQuickFixCommands(
 function createApplyCodeActionCommand(title: string, uriTextEditMapping: Record<string, TextEdit[]>): Command {
   return {
     title,
-    command: 'vetur.applyWorkspaceEdits',
+    command: 'applets.applyWorkspaceEdits',
     arguments: [
       {
         changes: uriTextEditMapping

@@ -2,7 +2,7 @@ export const params = {
   capabilities: {},
   initializationOptions: {
     config: {
-      vetur: {
+      applets: {
         validation: {
           template: true,
           style: false,

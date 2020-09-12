@@ -48,7 +48,7 @@ export class VueInterpolationMode implements LanguageMode {
   }
 
   doValidation(document: TextDocument): Diagnostic[] {
-    if (!_.get(this.config, ['vetur', 'experimental', 'templateInterpolationService'], true)) {
+    if (!_.get(this.config, ['applets', 'experimental', 'templateInterpolationService'], true)) {
       return [];
     }
 
@@ -79,13 +79,13 @@ export class VueInterpolationMode implements LanguageMode {
         severity: DiagnosticSeverity.Error,
         message: ts.flattenDiagnosticMessageText(diag.messageText, '\n'),
         code: diag.code,
-        source: 'Vetur'
+        source: 'applets'
       };
     });
   }
 
   doComplete(document: TextDocument, position: Position): CompletionList {
-    if (!_.get(this.config, ['vetur', 'experimental', 'templateInterpolationService'], true)) {
+    if (!_.get(this.config, ['applets', 'experimental', 'templateInterpolationService'], true)) {
       return NULL_COMPLETION;
     }
 
@@ -164,7 +164,7 @@ export class VueInterpolationMode implements LanguageMode {
   }
 
   doResolve(document: TextDocument, item: CompletionItem): CompletionItem {
-    if (!_.get(this.config, ['vetur', 'experimental', 'templateInterpolationService'], true)) {
+    if (!_.get(this.config, ['applets', 'experimental', 'templateInterpolationService'], true)) {
       return item;
     }
 
@@ -216,7 +216,7 @@ export class VueInterpolationMode implements LanguageMode {
     contents: MarkedString[];
     range?: Range;
   } {
-    if (!_.get(this.config, ['vetur', 'experimental', 'templateInterpolationService'], true)) {
+    if (!_.get(this.config, ['applets', 'experimental', 'templateInterpolationService'], true)) {
       return { contents: [] };
     }
 
@@ -255,7 +255,7 @@ export class VueInterpolationMode implements LanguageMode {
   }
 
   findDefinition(document: TextDocument, position: Position): Location[] {
-    if (!_.get(this.config, ['vetur', 'experimental', 'templateInterpolationService'], true)) {
+    if (!_.get(this.config, ['applets', 'experimental', 'templateInterpolationService'], true)) {
       return [];
     }
 
@@ -303,7 +303,7 @@ export class VueInterpolationMode implements LanguageMode {
   }
 
   findReferences(document: TextDocument, position: Position): Location[] {
-    if (!_.get(this.config, ['vetur', 'experimental', 'templateInterpolationService'], true)) {
+    if (!_.get(this.config, ['applets', 'experimental', 'templateInterpolationService'], true)) {
       return [];
     }
 

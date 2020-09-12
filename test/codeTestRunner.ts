@@ -5,7 +5,7 @@ import * as minimist from 'minimist';
 
 import { downloadAndUnzipVSCode, runTests } from 'vscode-test';
 
-console.log('### Vetur Integration Test ###');
+console.log('### applets Integration Test ###');
 console.log('');
 
 const EXT_ROOT = path.resolve(__dirname, '../../');

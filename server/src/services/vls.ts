@@ -91,7 +91,7 @@ export class VLS {
 
     const workspacePath = params.rootPath;
     if (!workspacePath) {
-      console.error('No workspace path found. Vetur initialization failed.');
+      console.error('No workspace path found. applets initialization failed.');
       return {
         capabilities: {}
       };
@@ -217,13 +217,13 @@ export class VLS {
 
   configure(config: VLSConfig): void {
     if (!config.applets) return
-    const veturValidationOptions = config.applets.validation;
-    this.validation['vue-html'] = veturValidationOptions.template;
-    this.validation.css = veturValidationOptions.style;
-    this.validation.postcss = veturValidationOptions.style;
-    this.validation.scss = veturValidationOptions.style;
-    this.validation.less = veturValidationOptions.style;
-    this.validation.javascript = veturValidationOptions.script;
+    const appletsValidationOptions = config.applets.validation;
+    this.validation['vue-html'] = appletsValidationOptions.template;
+    this.validation.css = appletsValidationOptions.style;
+    this.validation.postcss = appletsValidationOptions.style;
+    this.validation.scss = appletsValidationOptions.style;
+    this.validation.less = appletsValidationOptions.style;
+    this.validation.javascript = appletsValidationOptions.script;
 
     this.languageModes.getAllModes().forEach(m => {
       if (m.configure) {
