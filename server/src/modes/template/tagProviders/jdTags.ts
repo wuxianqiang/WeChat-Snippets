@@ -10,10 +10,10 @@ import {
   HTMLTagSpecification,
 } from './common';
 
-const wxJson = require('jd-json/jd.json')
-const u = undefined
+const wxJson = require('jd-json/jd.json');
+const u = undefined;
 
-let vueDirectives = [
+const vueDirectives = [
   genAttribute('jd:if', u, '在框架中，使用 `jd:if` 来判断是否需要渲染该代码块'),
   genAttribute('jd:else', 'v', '也可以用 `jd:elif` 和 `jd:else` 来添加一个 else 块'),
   genAttribute('jd:elif', u, '也可以用 `jd:elif` 和 `jd:else` 来添加一个 else 块'),
@@ -34,28 +34,28 @@ export interface IEventSet {
 }
 
 const eventHandlers: IEventSet = {
-  'touchstart': '手指触摸动作开始',
-  'touchmove': '手指触摸后移动',
-  'touchcancel': '手指触摸动作被打断，如来电提醒，弹窗',
-  'touchend': '手指触摸动作结束',
-  'tap': '手指触摸后马上离开',
-  'longpress': '手指触摸后，超过350ms再离开，如果指定了事件回调函数并触发了这个事件，tap事件将不被触发',
-  'longtap': '手指触摸后，超过350ms再离开（推荐使用longpress事件代替）',
-  'transitionend': '会在 WXSS transition 或 wx.createAnimation 动画结束后触发',
-  'animationstart': '会在一个 WXSS animation 动画开始时触发',
-  'animationiteration': '会在一个 WXSS animation 一次迭代结束时触发',
-  'animationend': '会在一个 WXSS animation 动画完成时触发',
-  'touchforcechange': '在支持 3D Touch 的 iPhone 设备，重按时会触发'
-}
+  touchstart: '手指触摸动作开始',
+  touchmove: '手指触摸后移动',
+  touchcancel: '手指触摸动作被打断，如来电提醒，弹窗',
+  touchend: '手指触摸动作结束',
+  tap: '手指触摸后马上离开',
+  longpress: '手指触摸后，超过350ms再离开，如果指定了事件回调函数并触发了这个事件，tap事件将不被触发',
+  longtap: '手指触摸后，超过350ms再离开（推荐使用longpress事件代替）',
+  transitionend: '会在 WXSS transition 或 wx.createAnimation 动画结束后触发',
+  animationstart: '会在一个 WXSS animation 动画开始时触发',
+  animationiteration: '会在一个 WXSS animation 一次迭代结束时触发',
+  animationend: '会在一个 WXSS animation 动画完成时触发',
+  touchforcechange: '在支持 3D Touch 的 iPhone 设备，重按时会触发',
+};
 
-function generatorEvent (key: string) {
+function generatorEvent(key: string) {
   for (const eventName in eventHandlers) {
-    vueDirectives.push(genAttribute(`${key}${eventName}`, u, eventHandlers[eventName]))
+    vueDirectives.push(genAttribute(`${key}${eventName}`, u, eventHandlers[eventName]));
   }
 }
 
-generatorEvent('bind')
-generatorEvent('catch')
+generatorEvent('bind');
+generatorEvent('catch');
 
 const valueSets = {
   transMode: ['out-in', 'in-out'],
@@ -64,33 +64,30 @@ const valueSets = {
 };
 
 interface Component {
-  [prop :string]: {
+  [prop: string]: {
     tableList: {
-      [attr :string]: string[]
-    },
-    descriptList: string[]
-  }
+      [attr: string]: string[];
+    };
+    descriptList: string[];
+  };
 }
 
 interface Tag {
-  [key :string]: HTMLTagSpecification
+  [key: string]: HTMLTagSpecification;
 }
 
-const weixinTags:Tag = {};
+const weixinTags: Tag = {};
 
 (wxJson as Component[]).forEach((component: Component) => {
   for (const key in component) {
-    let { tableList, descriptList } = component[key]
-    let attrList = []
+    const { tableList, descriptList } = component[key];
+    const attrList = [];
     for (const table in tableList) {
-      attrList.push(genAttribute(table, u, { kind: 'markdown', value:  tableList[table].join('；') }))
+      attrList.push(genAttribute(table, u, tableList[table].join('；')));
     }
-    weixinTags[key] = new HTMLTagSpecification(
-      { kind: 'markdown', value:  descriptList.join('；') },
-      attrList
-    )
+    weixinTags[key] = new HTMLTagSpecification({ kind: 'markdown', value: descriptList.join('；') }, attrList);
   }
-})
+});
 
 export function getJdTagProvider(): IHTMLTagProvider {
   return {
