@@ -4,7 +4,7 @@
   "description": "WeChat tooling for VS Code",
   "author": "Xianqiang Wu <2631640352@qq.com>",
   "icon": "asset/logo.png",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "publisher": "wuxianqiang",
   "scripts": {
     "build:grammar": "tsc -p . && node dist/scripts/build_grammar",
@@ -23,12 +23,6 @@
     "test": "run-s compile test:server test:e2e",
     "docs": "bash ./build/update-docs.sh",
     "prepare-publish": "./build/release-cleanup.sh"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run test:server"
-    }
   },
   "lint-staged": {
     "*.ts": [
