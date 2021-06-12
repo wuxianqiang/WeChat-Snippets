@@ -86,10 +86,10 @@
     "@types/glob" "*"
     "@types/node" "*"
 
-"@types/vscode@^1.47.0":
-  version "1.47.0"
-  resolved "https://registry.yarnpkg.com/@types/vscode/-/vscode-1.47.0.tgz#4a4051c21ecaadcf383a2c4387bea282540e96de"
-  integrity sha512-nJA37ykkz9FYA0ZOQUSc3OZnhuzEW2vUhUEo4MiduUo82jGwwcLfyvmgd/Q7b0WrZAAceojGhZybg319L24bTA==
+"@types/vscode@^1.46.0":
+  version "1.57.0"
+  resolved "https://registry.yarnpkg.com/@types/vscode/-/vscode-1.57.0.tgz#cc648e0573b92f725cd1baf2621f8da9f8bc689f"
+  integrity sha512-FeznBFtIDCWRluojTsi9c3LLcCHOXP5etQfBK42+ixo1CoEAchkw39tuui9zomjZuKfUVL33KZUDIwHZ/xvOkQ==
 
 agent-base@4, agent-base@^4.3.0:
   version "4.3.0"
@@ -105,6 +105,11 @@ aggregate-error@^3.0.0:
   dependencies:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
+
+alipay-json@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/alipay-json/-/alipay-json-1.0.0.tgz#108961184fe8bba979ad0d612f71729383c24969"
+  integrity sha512-rEsv82mA2WHwT2u16t5jnsELKcsrROdHej1GUNCjDtFhxGOrtW9LnWYICX0Av154DKpFuH4vlD4I0buR1qL+Bg==
 
 ansi-colors@3.2.3:
   version "3.2.3"
@@ -184,6 +189,11 @@ astral-regex@^2.0.0:
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-2.0.0.tgz#483143c567aeed4785759c0865786dc77d7d2e31"
   integrity sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==
 
+baidu-json@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/baidu-json/-/baidu-json-1.0.0.tgz#7085b51bffc5db0212003024c3b22a91854ee362"
+  integrity sha512-0abXVfBPK6eoMTox32JVRMZ6MZzrGlEeEHGbXP2cXc2yqDSBHq0y0BqavTCsaY9lwnv4j69NMf3EXCiZJ0gK8w==
+
 balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
@@ -215,6 +225,11 @@ browser-stdout@1.3.1:
 builtin-modules@^1.0.0, builtin-modules@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/builtin-modules/-/builtin-modules-1.1.1.tgz#270f076c5a72c02f5b65a47df94c5fe3a278892f"
+
+bytedance-json@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/bytedance-json/-/bytedance-json-1.0.0.tgz#f324892bd35a16985d7dc36a7bd61b8cca593f2e"
+  integrity sha512-KuIq0LmEnIyt0hqNZECvFXxPtfeDQcgVeOMAgroVYjbW9rLSbmCoUFa7Qf/XO+9Iyp4O2Xdo3GZBtogsoxDkZg==
 
 caller-callsite@^2.0.0:
   version "2.0.0"
@@ -641,9 +656,9 @@ get-stream@^5.0.0:
     pump "^3.0.0"
 
 glob-parent@~5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.0.tgz#5f4c1d1e748d30cd73ad2944b3577a81b081e8c2"
-  integrity sha512-qjtRgnIVmOfnKUE3NJAQEdk+lKrxfw8t5ke7SXtfMTHcjsBfOfWXCQfdb30zfDoZQ2IRSIiidmjtbHZPZ++Ihw==
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
+  integrity sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==
   dependencies:
     is-glob "^4.0.1"
 
@@ -887,6 +902,11 @@ is-symbol@^1.0.2:
 isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
+
+jd-json@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/jd-json/-/jd-json-1.0.0.tgz#be52afacb70591b085ecaa2bb899a0961410f36a"
+  integrity sha512-gux2hmv8bKk7YT2/C5s6jUx8COrfxcbdS8cineQvg0oh063NcR8Fczks16xRCSrGLVq07ZPTp2Rkvoug5ToMZw==
 
 js-tokens@^4.0.0:
   version "4.0.0"
@@ -1369,6 +1389,11 @@ pump@^3.0.0:
     end-of-stream "^1.1.0"
     once "^1.3.1"
 
+qq-json@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/qq-json/-/qq-json-1.0.0.tgz#869da654bdacdfd5efe9bba80cabcf098151cfcd"
+  integrity sha512-LpP95PYnZFDRlLCOn3+N/xB4p3v9gtHemM34av6jyNX8/XOHyJqB/4PJDdLHaSxxvEvcHdp424sAI1KPusVF/Q==
+
 read-pkg@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/read-pkg/-/read-pkg-3.0.0.tgz#9cbc686978fee65d16c00e2b19c237fcf6e38389"
@@ -1803,6 +1828,11 @@ vscode-test@^1.4.0:
     http-proxy-agent "^2.1.0"
     https-proxy-agent "^2.2.4"
     rimraf "^2.6.3"
+
+weixin-json@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/weixin-json/-/weixin-json-1.0.0.tgz#4d2fb84f730c32ef6f78746dd04fe5be7c585159"
+  integrity sha512-PnFE9QA0PGN1F1Pkpf+PcjD+n4BxtE3kJwqsHnJwyrqE7qb12OlUQ2JNh6vVciZYC8+kcKEhPwEj+HK0CBXJKQ==
 
 which-module@^2.0.0:
   version "2.0.0"
