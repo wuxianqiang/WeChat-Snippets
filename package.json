@@ -4,7 +4,7 @@
   "description": "WeChat tooling for VS Code",
   "author": "Xianqiang Wu <2631640352@qq.com>",
   "icon": "asset/logo.png",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "publisher": "wuxianqiang",
   "scripts": {
     "build:grammar": "tsc -p . && node dist/scripts/build_grammar",

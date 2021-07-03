@@ -1,10 +1,10 @@
 # WeChat Snippets for Visual Studio Code
 
-> ⚠️ 注意：请先安装Vetur插件和Prettier插件再安装此插件
+> ⚠️ 注意：请先安装Prettier插件再安装此插件
 
-小程序代码提示插件(同时支持6种小程序类型)
+小程序代码提示插件(同时支持6种小程序类型)，跨平台，可以在·设置->小程序·中任意切换环境。
 
-## Features
+## Features 特性
 
 - Syntax-highlighting
 - 代码高亮
@@ -110,7 +110,11 @@ Including most of the API of WeChat. You can type `w`, choose `wx:if`, and press
 * jxml(.jxml)京东小程序
 * swan(.swan)百度小程序
 
-> 微信小程序的JS由 `@types/wechat-miniprogram` 提供支持
+> 微信小程序的JS由 `@types/wechat-miniprogram` 提供支持，所以在微信环境下需要安装此依赖。
+
+```
+npm install @types/wechat-miniprogram --save-dev
+```
 
 
 ### Issues
