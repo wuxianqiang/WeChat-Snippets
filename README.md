@@ -2,7 +2,7 @@
 
 > ⚠️ 注意：请先安装Prettier插件再安装此插件
 
-小程序代码提示插件(同时支持6种小程序类型)，跨平台，可以在·设置->小程序·中任意切换环境。
+小程序代码提示插件(同时支持6种小程序类型)，跨平台，可以在 "设置->小程序" 中任意切换环境。
 
 ## Features 特性
 
@@ -102,7 +102,7 @@ Including most of the API of WeChat. You can type `w`, choose `wx:if`, and press
 
 
 
-### Supported languages
+### Supported languages 支持6种
 * wxml(.wxml)微信小程序
 * axml(.axml)支付宝小程序
 * qml(.qml)QQ小程序
@@ -110,15 +110,43 @@ Including most of the API of WeChat. You can type `w`, choose `wx:if`, and press
 * jxml(.jxml)京东小程序
 * swan(.swan)百度小程序
 
-> 微信小程序的JS由 `@types/wechat-miniprogram` 提供支持，所以在微信环境下需要安装此依赖。
+1、微信小程序的JS由 `npm` 提供支持，所以在微信环境下需要安装此依赖。[官网](https://developers.weixin.qq.com/miniprogram/dev/reference/)
 
 ```
-npm install @types/wechat-miniprogram --save-dev
+npm i --save-dev wx-apis
+```
+2、支付宝小程序的JS由 `npm` 提供支持，所以在支付宝环境下需要安装此依赖。[官网](https://opendocs.alipay.com/mini/framework)
+
+```
+npm i --save-dev my-apis
+```
+3、QQ小程序的JS由 `npm` 提供支持，所以在QQ环境下需要安装此依赖。[官网](https://q.qq.com/wiki/develop/miniprogram/frame/)
+
+```
+npm i --save-dev qq-apis
+```
+4、头条小程序的JS由 `npm` 提供支持，所以在头条环境下需要安装此依赖。[官网](https://microapp.bytedance.com/docs/zh-CN/mini-app/develop/framework/basic-reference/catalog-structure)
+
+```
+npm i --save-dev tt-apis
+```
+5、京东小程序的JS由 `npm` 提供支持，所以在京东环境下需要安装此依赖。[官网](http://mp.jd.com/docs/dev/)
+
+```
+npm i --save-dev jd-apis
+```
+6、百度小程序的JS由 `npm` 提供支持，所以在百度环境下需要安装此依赖。[官网](https://smartprogram.baidu.com/docs/develop/tutorial/intro/)
+
+```
+npm i --save-dev swan-apis
 ```
 
+> 如果只安装插件没有安装对应的依赖是无法实现JS语法提示的！
 
 ### Issues
 Submit the [issues](https://github.com/wuxianqiang/WeChat-Snippets/issues) if you find any bug or have any suggestion.
+
+如果你发现任何bug或者有任何建可以提交[issues](https://github.com/wuxianqiang/WeChat-Snippets/issues)反馈
 
 ### Contribution
 Fork the [repo](https://github.com/wuxianqiang/WeChat-Snippets) and submit pull requests.
