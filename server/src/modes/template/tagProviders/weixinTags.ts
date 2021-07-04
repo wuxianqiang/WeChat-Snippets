@@ -27,6 +27,7 @@ const vueDirectives = [
   ),
   genAttribute('id', u, 'css选择器'),
   genAttribute('class', u, 'css选择器'),
+  genAttribute('style', u, '页面样式'),
 ];
 
 export interface IEventSet {
@@ -91,6 +92,29 @@ const weixinTags:Tag = {};
     );
   }
 });
+
+weixinTags['template'] = new HTMLTagSpecification(
+  { kind: 'markdown', value:  'WXML提供模板（template），可以在模板中定义代码片段，然后在不同的地方调用。' },
+  [
+    genAttribute('name', u, '使用 name 属性，作为模板的名字。然后在<template/>内定义代码片段'),
+    genAttribute('is', u, '使用 is 属性，声明需要的使用的模板，然后将模板所需要的 data 传入'),
+    genAttribute('data', u, '模板所需要的数据'),
+  ]
+);
+
+weixinTags['import'] = new HTMLTagSpecification(
+  { kind: 'markdown', value:  'WXML 提供两种文件引用方式import和include。' },
+  [
+    genAttribute('src', u, '文件引用'),
+  ]
+);
+
+weixinTags['include'] = new HTMLTagSpecification(
+  { kind: 'markdown', value:  'WXML 提供两种文件引用方式import和include。' },
+  [
+    genAttribute('src', u, '文件引用'),
+  ]
+);
 
 export function getWeixinTagProvider(): IHTMLTagProvider {
   return {

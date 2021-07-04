@@ -170,7 +170,7 @@ function provideCompletionItems(document: any, position: any) {
   const temp = text.slice(0, tempEnd + 11)
   const pos = document.offsetAt(position)
   if (tempEnd < 0 || pos > tempEnd) {
-    return [craeteCompletion('view')]
+    return keys.map((key) => craeteCompletion(key))
   }
   const posLeft = temp.slice(0, pos).lastIndexOf('>')
   const posRight = temp.slice(pos, tempEnd + 11).indexOf('<')

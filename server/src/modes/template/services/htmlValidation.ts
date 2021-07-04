@@ -25,8 +25,7 @@ export function doESLintValidation(document: TextDocument, engine: CLIEngine): D
   }
   const text = rawText.replace(/ {6}/, '<template><div>') + '</div></template>';
   const report = engine.executeOnText(text, document.uri);
-
-  return report.results[0] ? report.results[0].messages.map(toDiagnostic) : [];
+  return (report.results[0] && report.results[0].messages) ? report.results[0].messages.map(toDiagnostic) : [];
 }
 
 export function createLintEngine() {

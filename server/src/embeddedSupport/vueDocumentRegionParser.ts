@@ -25,63 +25,67 @@ export function parseVueDocumentRegions(document: TextDocument) {
   const importedScripts: string[] = [];
 
   let token = scanner.scan();
-  while (token !== TokenType.EOS) {
-    switch (token) {
-      case TokenType.Styles:
-        regions.push({
-          languageId: /^(sass|scss|less|postcss|stylus)$/.test(languageIdFromType)
-            ? (languageIdFromType as LanguageId)
-            : defaultCSSLang,
-          start: scanner.getTokenOffset(),
-          end: scanner.getTokenEnd(),
-          type: 'style',
-        });
-        languageIdFromType = '';
-        break;
-      case TokenType.Script:
-        regions.push({
-          languageId: languageIdFromType ? languageIdFromType : defaultScriptLang,
-          start: scanner.getTokenOffset(),
-          end: scanner.getTokenEnd(),
-          type: 'script',
-        });
-        languageIdFromType = '';
-        break;
-      case TokenType.StartTag:
-        const tagName = scanner.getTokenText();
-        if (tagName === 'view') {
-          const templateRegion = scanTemplateRegion(scanner, text);
-          if (templateRegion) {
-            regions.push(templateRegion);
-          }
-        }
-        lastTagName = tagName;
-        lastAttributeName = '';
-        break;
-      case TokenType.AttributeName:
-        lastAttributeName = scanner.getTokenText();
-        break;
-      case TokenType.AttributeValue:
-        if (lastAttributeName === 'lang') {
-          languageIdFromType = getLanguageIdFromLangAttr(scanner.getTokenText());
-        } else {
-          if (lastAttributeName === 'src' && lastTagName.toLowerCase() === 'script') {
-            let value = scanner.getTokenText();
-            if (value[0] === "'" || value[0] === '"') {
-              value = value.slice(1, value.length - 1);
-            }
-            importedScripts.push(value);
-          }
-        }
-        lastAttributeName = '';
-        break;
-      case TokenType.EndTagClose:
-        lastAttributeName = '';
-        languageIdFromType = '';
-        break;
-    }
-    token = scanner.scan();
+  const templateRegion = scanTemplateRegion(scanner, text);
+  if (templateRegion) {
+    regions.push(templateRegion);
   }
+  // while (token !== TokenType.EOS) {
+  //   switch (token) {
+  //     case TokenType.Styles:
+  //       regions.push({
+  //         languageId: /^(sass|scss|less|postcss|stylus)$/.test(languageIdFromType)
+  //           ? (languageIdFromType as LanguageId)
+  //           : defaultCSSLang,
+  //         start: scanner.getTokenOffset(),
+  //         end: scanner.getTokenEnd(),
+  //         type: 'style',
+  //       });
+  //       languageIdFromType = '';
+  //       break;
+  //     case TokenType.Script:
+  //       regions.push({
+  //         languageId: languageIdFromType ? languageIdFromType : defaultScriptLang,
+  //         start: scanner.getTokenOffset(),
+  //         end: scanner.getTokenEnd(),
+  //         type: 'script',
+  //       });
+  //       languageIdFromType = '';
+  //       break;
+  //     case TokenType.StartTag:
+  //       const tagName = scanner.getTokenText();
+  //       if (tagName === 'view') {
+  //         const templateRegion = scanTemplateRegion(scanner, text);
+  //         if (templateRegion) {
+  //           regions.push(templateRegion);
+  //         }
+  //       }
+  //       lastTagName = tagName;
+  //       lastAttributeName = '';
+  //       break;
+  //     case TokenType.AttributeName:
+  //       lastAttributeName = scanner.getTokenText();
+  //       break;
+  //     case TokenType.AttributeValue:
+  //       if (lastAttributeName === 'lang') {
+  //         languageIdFromType = getLanguageIdFromLangAttr(scanner.getTokenText());
+  //       } else {
+  //         if (lastAttributeName === 'src' && lastTagName.toLowerCase() === 'script') {
+  //           let value = scanner.getTokenText();
+  //           if (value[0] === "'" || value[0] === '"') {
+  //             value = value.slice(1, value.length - 1);
+  //           }
+  //           importedScripts.push(value);
+  //         }
+  //       }
+  //       lastAttributeName = '';
+  //       break;
+  //     case TokenType.EndTagClose:
+  //       lastAttributeName = '';
+  //       languageIdFromType = '';
+  //       break;
+  //   }
+  //   token = scanner.scan();
+  // }
 
   return {
     regions,
@@ -91,7 +95,12 @@ export function parseVueDocumentRegions(document: TextDocument) {
 
 function scanTemplateRegion(scanner: Scanner, text: string): EmbeddedRegion | null {
   let languageId: LanguageId = 'vue-html';
-
+  return {
+    languageId,
+    start: 0,
+    end: text.length,
+    type: 'template',
+  };
   let token = -1;
   let start = 0;
   let end: number;

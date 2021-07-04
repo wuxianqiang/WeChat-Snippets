@@ -10,8 +10,8 @@ import { prettierify } from '../../../utils/prettier';
 
 type PrettyHtmlConfig = IPrettyHtml extends (input: string, options: infer R) => any ? NonNullable<R> : never;
 
-const TEMPLATE_HEAD = '<view>';
-const TEMPLATE_TAIL = '</view>';
+const TEMPLATE_HEAD = '';
+const TEMPLATE_TAIL = '';
 
 export function htmlFormat(document: TextDocument, currRange: Range, vlsFormatConfig: VLSFormatConfig): TextEdit[] {
   // 这是格式化文档真正调用的地方

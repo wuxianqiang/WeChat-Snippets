@@ -1,4 +1,4 @@
-# WeChat Snippets for Visual Studio Code
+# Miniprogram for Visual Studio Code
 
 > ⚠️ 注意：请先安装Prettier插件再安装此插件
 

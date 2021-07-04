@@ -27,6 +27,7 @@ const vueDirectives = [
   ),
   genAttribute('id', u, 'css选择器'),
   genAttribute('class', u, 'css选择器'),
+  genAttribute('style', u, '页面样式'),
 ];
 
 export interface IEventSet {
