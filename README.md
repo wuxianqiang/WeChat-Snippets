@@ -146,10 +146,14 @@ npm i --save-dev swan-apis
 ### Issues
 Submit the [issues](https://github.com/wuxianqiang/WeChat-Snippets/issues) if you find any bug or have any suggestion.
 
-如果你发现任何bug或者有任何建可以提交[issues](https://github.com/wuxianqiang/WeChat-Snippets/issues)反馈
+如果你发现任何bug或者有任何建议可以提交[issues](https://github.com/wuxianqiang/WeChat-Snippets/issues)反馈
 
 ### Contribution
 Fork the [repo](https://github.com/wuxianqiang/WeChat-Snippets) and submit pull requests.
+
+如果你还在寻找一款好用的跨端框架，那么推荐你使用 [Mpx](https://github.com/didi/mpx).
+
+
 
 ##### 2020/07/18 (0.0.1)
 * Add code snippets
