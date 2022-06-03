@@ -1,7 +1,5 @@
 # Miniprogram for Visual Studio Code
 
-> ⚠️ 注意：请先安装Prettier插件再安装此插件
-
 小程序代码提示插件(同时支持6种小程序类型)，跨平台，可以在 "设置->小程序" 中任意切换环境。
 
 ## Features 特性
