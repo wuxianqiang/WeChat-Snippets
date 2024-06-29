@@ -8,6 +8,7 @@ import { getByteTagProvider } from './bytedanceTags'
 import { getJdTagProvider } from './jdTags'
 import { getQqTagProvider } from './qqTags'
 import { getBaiduTagProvider } from './baiduTags'
+import { getKuaishouTagProvider } from './ksTags'
 import {
   elementTagProvider,
   onsenTagProvider,
@@ -170,6 +171,9 @@ export function getEnabledTagProviders(tagProviderSetting: CompletionConfigurati
   }
   if (config.applets && config.applets.languages === 'QQ小程序') {
     !hasVal && allTagProviders.push(getQqTagProvider())
+  }
+  if (config.applets && config.applets.languages === '快手小程序') {
+    !hasVal && allTagProviders.push(getKuaishouTagProvider())
   }
   return allTagProviders.filter(p => tagProviderSetting[p.getId()] !== false);
 }

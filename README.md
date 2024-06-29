@@ -107,6 +107,7 @@ Including most of the API of WeChat. You can type `w`, choose `wx:if`, and press
 * ttml(.ttml)头条小程序
 * jxml(.jxml)京东小程序
 * swan(.swan)百度小程序
+* ksml(.ksml)快手小程序
 
 1、微信小程序的JS由 `npm` 提供支持，所以在微信环境下需要安装此依赖。[官网](https://developers.weixin.qq.com/miniprogram/dev/reference/)
 

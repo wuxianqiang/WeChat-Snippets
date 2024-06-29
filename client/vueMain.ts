@@ -73,7 +73,7 @@ export async function activate(context: vscode.ExtensionContext) {
     .catch(e => {
       console.log('Client initialization failed');
     });
-  context.subscriptions.push(vscode.languages.registerCompletionItemProvider(['xml', 'wxml', 'axml', 'qml', 'ttml', 'jxml', 'swan'], {
+  context.subscriptions.push(vscode.languages.registerCompletionItemProvider(['xml', 'wxml', 'axml', 'qml', 'ttml', 'jxml', 'swan', 'ksml'], {
     provideCompletionItems,
     resolveCompletionItem
   }, '1'));
@@ -101,6 +101,15 @@ function registerCustomLSPCommands(context: vscode.ExtensionContext, client: Lan
 }
 let keys: string[] = []
 if (languages === '微信小程序') {
+  const list = require('weixin-json/wx.json')
+  list.forEach((item: any) => {
+    const key = Object.keys(item)[0]
+    if (key) {
+      keys.push(key)
+    }
+  })
+}
+if (languages === '快手小程序') {
   const list = require('weixin-json/wx.json')
   list.forEach((item: any) => {
     const key = Object.keys(item)[0]

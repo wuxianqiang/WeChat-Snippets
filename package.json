@@ -38,8 +38,8 @@
   },
   "keywords": [
     "小程序",
-    "微信/支付宝/QQ/字节头条/京东/智能百度",
-    "wxml/axml/qml/ttml/jxml/swan",
+    "微信/支付宝/QQ/字节头条/京东/智能百度/快手",
+    "wxml/axml/qml/ttml/jxml/swan/ksml",
     "wxss/acss/qss/css/jxss/js/json",
     "WeChat Snippets"
   ],
@@ -47,7 +47,7 @@
     "Programming Languages"
   ],
   "engines": {
-    "vscode": "^1.46.0"
+    "vscode": "^1.52.0"
   },
   "dependencies": {
     "alipay-json": "^1.0.0",
@@ -90,7 +90,8 @@
           ".qml",
           ".ttml",
           ".jxml",
-          ".swan"
+          ".swan",
+          ".ksml"
         ],
         "configuration": "./languages/vue-postcss-language-configuration.json"
       }
@@ -446,7 +447,8 @@
             "QQ小程序",
             "京东小程序",
             "百度小程序",
-            "字节小程序"
+            "字节小程序",
+            "快手小程序"
           ],
           "enumDescriptions": [
             "使用微信小程序指令的语法",
@@ -454,7 +456,8 @@
             "使用QQ小程序指令的语法",
             "使用京东小程序指令的语法",
             "使用百度小程序指令的语法",
-            "使用字节小程序指令的语法"
+            "使用字节小程序指令的语法",
+            "使用快手小程序指令的语法"
           ],
           "description": "配置小程序的类型"
         }
@@ -469,7 +472,7 @@
     "@types/mocha": "^7.0.2",
     "@types/node": "^14.0.23",
     "@types/shelljs": "^0.8.6",
-    "@types/vscode": "^1.46.0",
+    "@types/vscode": "1.52.0",
     "glob": "^7.1.6",
     "husky": "^3.1.0",
     "js-yaml": "^3.14.0",
