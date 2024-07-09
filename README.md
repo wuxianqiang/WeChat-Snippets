@@ -139,13 +139,20 @@ npm i --save-dev jd-apis
 ```
 npm i --save-dev swan-apis
 ```
+6、快手小程序的JS由 `npm` 提供支持，所以在快手环境下需要安装此依赖。[官网](https://mp.kuaishou.com/docs/develop/guide/introduction.html)
 
-> 如果只安装插件没有安装对应的依赖是无法实现JS语法提示的！
+```
+npm i --save-dev ks-miniprogram-types
+```
+
+> 1.如果只安装插件没有安装对应的依赖是无法实现JS语法提示的！2.如果你需要 Tailwind CSS 开发小程序，那么你需要在设置的 Incclude Languages 中添加 `项:xml-值:html` 配置。
 
 ### Issues
 Submit the [issues](https://github.com/wuxianqiang/WeChat-Snippets/issues) if you find any bug or have any suggestion.
 
-如果你发现任何bug或者有任何建议可以提交[issues](https://github.com/wuxianqiang/WeChat-Snippets/issues)反馈
+如果你发现任何bug或者有任何建议可以提交[issues](https://github.com/wuxianqiang/WeChat-Snippets/issues)或扫描下方二维码进行反馈
+
+![banner](https://foruda.gitee.com/images/1720530714423550176/bfcf0f82_1411078.jpeg)
 
 ### Contribution
 Fork the [repo](https://github.com/wuxianqiang/WeChat-Snippets) and submit pull requests.
@@ -153,6 +160,11 @@ Fork the [repo](https://github.com/wuxianqiang/WeChat-Snippets) and submit pull 
 如果你还在寻找一款好用的跨端框架，那么推荐你使用 [Mpx](https://github.com/didi/mpx).
 
 
+##### 2024/07/08 (1.0.8)
+* Update readme
+
+##### 2024/06/30 (1.0.7)
+* update code snippets
 
 ##### 2020/07/18 (0.0.1)
 * Add code snippets

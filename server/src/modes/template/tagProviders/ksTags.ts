@@ -84,7 +84,7 @@ import {
       const { tableList, descriptList } = component[key];
       const attrList = [];
       for (const table in tableList) {
-        attrList.push(genAttribute(table, u, tableList[table].join('；')));
+        attrList.push(genAttribute(table, u, tableList[table].join('\n - ')));
       }
       weixinTags[key] = new HTMLTagSpecification(
         { kind: 'markdown', value:  descriptList.join('；') },

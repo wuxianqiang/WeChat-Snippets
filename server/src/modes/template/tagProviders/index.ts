@@ -55,13 +55,16 @@ export function getTagProviderSettings(workspacePath: string | null | undefined)
     'quasar-framework': false, // Quasar pre v1
     nuxt: false,
     gridsome: false,
-    wxml: true
+    wxml: true,
+    ks: false,
+    wx: false,
+    tt: false,
   };
   if (!workspacePath) {
     return settings;
   }
   try {
-    const packagePath = ts.findConfigFile(workspacePath, ts.sys.fileExists, 'package.json');
+    const packagePath = ts.findConfigFile(workspacePath, ts.sys.fileExists, 'project.config.json');
     if (!packagePath) {
       return settings;
     }
@@ -69,7 +72,11 @@ export function getTagProviderSettings(workspacePath: string | null | undefined)
     const rootPkgJson = JSON.parse(fs.readFileSync(packagePath, 'utf-8'));
     const dependencies = rootPkgJson.dependencies || {};
     const devDependencies = rootPkgJson.devDependencies || {};
-
+    if (rootPkgJson.appid) {
+      settings['ks'] = rootPkgJson.appid.slice(0, 2) === 'ks';
+      settings['wx'] = rootPkgJson.appid.slice(0, 2) === 'wx';
+      settings['tt'] = rootPkgJson.appid.slice(0, 2) === 'tt';
+    }
     if (dependencies['vue-router']) {
       settings['router'] = true;
     }
@@ -153,27 +160,42 @@ export function getTagProviderSettings(workspacePath: string | null | undefined)
 }
 
 export function getEnabledTagProviders(tagProviderSetting: CompletionConfiguration, config: VLSFormatConfig) {
-  let hasVal = allTagProviders.some(item => item.getId() === 'wxml')
-  if (config.applets && config.applets.languages === '微信小程序') {
-    !hasVal && allTagProviders.push(getWeixinTagProvider())
+  if (tagProviderSetting.wx || tagProviderSetting.tt || tagProviderSetting.ks) {
+    // 根据project.config.json自动识别文件类型，真是无语，其他类别小程序既然文件名都不定义成一样的
+    let hasVal = allTagProviders.some(item => item.getId() === 'wxml')
+    if (tagProviderSetting.wx) {
+      !hasVal && allTagProviders.push(getWeixinTagProvider())
+    }
+    if (tagProviderSetting.tt) {
+      !hasVal && allTagProviders.push(getByteTagProvider())
+    }
+    if (tagProviderSetting.ks) {
+      !hasVal && allTagProviders.push(getKuaishouTagProvider())
+    }
+  } else {
+    let hasVal = allTagProviders.some(item => item.getId() === 'wxml')
+    if (config.applets && config.applets.languages === '微信小程序') {
+      !hasVal && allTagProviders.push(getWeixinTagProvider())
+    }
+    if (config.applets && config.applets.languages === '支付宝小程序') {
+      !hasVal && allTagProviders.push(getAlipayTagProvider())
+    }
+    if (config.applets && config.applets.languages === '字节小程序') {
+      !hasVal && allTagProviders.push(getByteTagProvider())
+    }
+    if (config.applets && config.applets.languages === '京东小程序') {
+      !hasVal && allTagProviders.push(getJdTagProvider())
+    }
+    if (config.applets && config.applets.languages === '百度小程序') {
+      !hasVal && allTagProviders.push(getBaiduTagProvider())
+    }
+    if (config.applets && config.applets.languages === 'QQ小程序') {
+      !hasVal && allTagProviders.push(getQqTagProvider())
+    }
+    if (config.applets && config.applets.languages === '快手小程序') {
+      !hasVal && allTagProviders.push(getKuaishouTagProvider())
+    }
   }
-  if (config.applets && config.applets.languages === '支付宝小程序') {
-    !hasVal && allTagProviders.push(getAlipayTagProvider())
-  }
-  if (config.applets && config.applets.languages === '字节小程序') {
-    !hasVal && allTagProviders.push(getByteTagProvider())
-  }
-  if (config.applets && config.applets.languages === '京东小程序') {
-    !hasVal && allTagProviders.push(getJdTagProvider())
-  }
-  if (config.applets && config.applets.languages === '百度小程序') {
-    !hasVal && allTagProviders.push(getBaiduTagProvider())
-  }
-  if (config.applets && config.applets.languages === 'QQ小程序') {
-    !hasVal && allTagProviders.push(getQqTagProvider())
-  }
-  if (config.applets && config.applets.languages === '快手小程序') {
-    !hasVal && allTagProviders.push(getKuaishouTagProvider())
-  }
+  
   return allTagProviders.filter(p => tagProviderSetting[p.getId()] !== false);
 }
