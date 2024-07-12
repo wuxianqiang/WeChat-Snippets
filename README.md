@@ -159,15 +159,11 @@ Fork the [repo](https://github.com/wuxianqiang/WeChat-Snippets) and submit pull 
 
 如果你还在寻找一款好用的跨端框架，那么推荐你使用 [Mpx](https://github.com/didi/mpx).
 
+##### 2024/07/12 (1.0.9)
+* Update blockComment
 
 ##### 2024/07/08 (1.0.8)
 * Update readme
 
 ##### 2024/06/30 (1.0.7)
 * update code snippets
-
-##### 2020/07/18 (0.0.1)
-* Add code snippets
-
-##### 2020/07/18 (0.0.2)
-* Update readme
